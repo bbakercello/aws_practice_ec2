@@ -1,0 +1,10 @@
+stages:
+  - deploy
+
+deploy_cloudformation:
+  stage: deploy
+  image: amazon/aws-cli:latest
+  script:
+    - aws cloudformation deploy --template-file cloudformation-template.yml --stack-name hello-world-stack --region us-east-1
+  only:
+    - main
